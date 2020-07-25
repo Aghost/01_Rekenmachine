@@ -18,7 +18,7 @@ namespace Rekenmachine
             CultureInfo.CurrentCulture = customCulture;
         }
 
-        public void Calculate_Operation(string input_operator, string target)
+        public string Calculate_Operation(string input_operator, string target)
         {
             switch (input_operator)
             {
@@ -28,6 +28,7 @@ namespace Rekenmachine
                 case "/": target = (result / Double.Parse(target)).ToString(); break;
                 default: break;
             }
+            return target;
         }
 
         private void Number_Event(object sender, EventArgs e)
@@ -66,7 +67,7 @@ namespace Rekenmachine
                 default: break;
             }
 
-            Calculate_Operation(operation, textBox.Text);
+            // Calculate_Operation(operation, textBox.Text);
             result = Double.Parse(textBox.Text);
             operation = newOperation;
         }
@@ -110,5 +111,3 @@ namespace Rekenmachine
         }
     }
 }
-
-// test
