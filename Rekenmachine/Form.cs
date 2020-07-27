@@ -18,14 +18,26 @@ namespace Rekenmachine
             CultureInfo.CurrentCulture = customCulture;
         }
 
-        public string Calculate_Operation(string input_operator, string target)
+        public string Calculate_Operation(string input_operator, Double result, string target)
         {
+            //if (target.EndsWith("."))
+            //    target.Remove(target.Length -1, 1);
+
+            switch (target)
+            {
+                case "": target = "0"; break;
+                case ".": target = "0.0"; break;
+                case "0.": target = "0.0"; break;
+                default: break;
+             }
+
             switch (input_operator)
             {
                 case "+": target = (result + Double.Parse(target)).ToString(); break;
                 case "-": target = (result - Double.Parse(target)).ToString(); break;
                 case "*": target = (result * Double.Parse(target)).ToString(); break;
                 case "/": target = (result / Double.Parse(target)).ToString(); break;
+                //case "%": target = ((result * Double.Parse(target) / 100) ).ToString(); break;
                 default: break;
             }
             return target;
@@ -39,14 +51,10 @@ namespace Rekenmachine
             Button b = (Button)sender;
             operatorActive = false;
 
-            if (b.Text == ".")
+            switch (b.Text)
             {
-                if (!textBox.Text.Contains("."))
-                    textBox.Text += b.Text;
-            }
-            else
-            {
-                textBox.Text += b.Text;
+                case ".": if (!textBox.Text.Contains(".")) {textBox.Text += "0" + b.Text;}; break;
+                default: textBox.Text += b.Text; break;
             }
         }
 
@@ -54,22 +62,28 @@ namespace Rekenmachine
         {
             operatorActive = true;
             Button b = (Button)sender;
-            string newOperation = b.Text;
 
+            string newOperation = b.Text;
             lbResult.Text = lbResult.Text + ' ' + textBox.Text + ' ' + newOperation;
 
-            switch(operation)
-            {
-                case "+": textBox.Text = (result + Double.Parse(textBox.Text)).ToString(); break;
-                case "-": textBox.Text = (result - Double.Parse(textBox.Text)).ToString(); break;
-                case "*": textBox.Text = (result * Double.Parse(textBox.Text)).ToString(); break;
-                case "/": textBox.Text = (result / Double.Parse(textBox.Text)).ToString(); break;
-                default: break;
-            }
-
-            // Calculate_Operation(operation, textBox.Text);
-            result = Double.Parse(textBox.Text);
+            result = Double.Parse(Calculate_Operation(operation, result, textBox.Text));
             operation = newOperation;
+        }
+
+        private void equals_b_Click(object sender, EventArgs e)
+        {
+            operatorActive = true;
+       
+            result = Double.Parse(Calculate_Operation(operation, result, textBox.Text));
+            lbEquation.Text = lbResult.Text + ' ' + textBox.Text + " = ";
+
+            textBox.Text = result.ToString(customCulture);
+
+            lbEquation.Text += textBox.Text;
+                        
+            lbResult.Text = "";
+            operation = "";
+            result = 0;
         }
 
         private void CE_Click(object sender, MouseEventArgs e)
@@ -82,30 +96,6 @@ namespace Rekenmachine
             textBox.Text = "0";
             lbResult.Text = "";
             lbEquation.Text = "";
-            operation = "";
-            result = 0;
-        }
-
-        private void equals_b_Click(object sender, EventArgs e)
-        {
-            lbEquation.Text = lbResult.Text + ' ' + textBox.Text + " = ";
-            operatorActive = true;
-
-            switch (operation)
-            {
-                case "+": textBox.Text = (result + Double.Parse(textBox.Text)).ToString(); break;
-                case "-": textBox.Text = (result - Double.Parse(textBox.Text)).ToString(); break;
-                case "*": textBox.Text = (result * Double.Parse(textBox.Text)).ToString(); break;
-                case "/": textBox.Text = (result / Double.Parse(textBox.Text)).ToString(); break;
-                default: break;
-            }
-
-            result = Double.Parse(textBox.Text);
-            textBox.Text = result.ToString(customCulture);
-            
-            lbEquation.Text += textBox.Text;
-                        
-            lbResult.Text = "";
             operation = "";
             result = 0;
         }
