@@ -39,9 +39,9 @@ namespace Rekenmachine
                 case "%": target = ((result * Double.Parse(target) / 100) ).ToString(); break;
                 default: break;
             }
+            if (valutaActive == true) { target = decimal.Parse(target).ToString("0.00"); }
 
-            if (valutaActive == true) { target = decimal.Parse(target).ToString("0.00"); return target; }
-            else return target;
+            return target;
         }
 
         private void Number_Event(object sender, EventArgs e)
@@ -68,6 +68,7 @@ namespace Rekenmachine
             lbResult.Text = lbResult.Text + ' ' + Format_Equation(textBox.Text) + ' ' + newOperation;
 
             result = Double.Parse(Calculate_Operation(operation, result, textBox.Text));
+
             operation = newOperation;
         }
 
@@ -96,7 +97,6 @@ namespace Rekenmachine
             operation = "";
             result = 0;
         }
-
 
         private void CE_Click(object sender, MouseEventArgs e)
         {

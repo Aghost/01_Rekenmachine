@@ -254,7 +254,7 @@
             this.c_b.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.c_b.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.c_b.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.c_b.Location = new System.Drawing.Point(361, 110);
+            this.c_b.Location = new System.Drawing.Point(361, 181);
             this.c_b.Name = "c_b";
             this.c_b.Size = new System.Drawing.Size(65, 65);
             this.c_b.TabIndex = 0;
@@ -267,7 +267,7 @@
             this.ce_b.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ce_b.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ce_b.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ce_b.Location = new System.Drawing.Point(361, 181);
+            this.ce_b.Location = new System.Drawing.Point(361, 110);
             this.ce_b.Name = "ce_b";
             this.ce_b.Size = new System.Drawing.Size(65, 65);
             this.ce_b.TabIndex = 0;
@@ -293,9 +293,8 @@
             this.lbResult.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lbResult.Location = new System.Drawing.Point(6, 39);
             this.lbResult.Name = "lbResult";
-            this.lbResult.Size = new System.Drawing.Size(31, 30);
+            this.lbResult.Size = new System.Drawing.Size(0, 30);
             this.lbResult.TabIndex = 2;
-            this.lbResult.Text = "R:";
             // 
             // dotb
             // 
@@ -317,9 +316,8 @@
             this.lbEquation.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lbEquation.Location = new System.Drawing.Point(6, 6);
             this.lbEquation.Name = "lbEquation";
-            this.lbEquation.Size = new System.Drawing.Size(29, 30);
+            this.lbEquation.Size = new System.Drawing.Size(0, 30);
             this.lbEquation.TabIndex = 2;
-            this.lbEquation.Text = "E:";
             // 
             // op_percent
             // 
